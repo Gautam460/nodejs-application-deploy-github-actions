@@ -27,7 +27,7 @@ const app = express();
 
 // Request Logging Middleware - MOVE TO TOP
 app.use((req, res, next) => {
-    console.log(`[DEBUG] Received ${req.method} ${req.url}`);
+    logger.info(`Received ${req.method} ${req.url}`);
     next();
 });
 
@@ -61,5 +61,10 @@ app.use("/api", aiRoutes);
 app.use("/api", chatbotRoutes);
 
 
+// Global Error Handler for catching 500 errors
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    logger.error(`API Error [${req.method} ${req.url}]`, err);
+    res.status(500).json({ error: "Internal Server Error", message: err.message });
+});
 
 export default app;
