@@ -10,43 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20' # Using standard node version
-
-      - name: Build and Prepare Deployment
-        run: |
-          # 1. Build the Frontend at root
-          npm install
-          npm run build
-          
-          # 2. Create a clean deployment folder
-          mkdir deploy_package
-          
-          # 3. Copy only what the server needs
-          cp -R dist/* deploy_package/
-          cp -R backend deploy_package/
-          cp .htaccess deploy_package/ || true
-          
-          # 4. Remove node_modules from backend to save upload time
-          rm -rf deploy_package/backend/node_modules
-
-      - name: Upload Files to Server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-          source: "deploy_package/"
-          target: "/home/princegarments/public_html"
-          strip_components: 1
-
-      - name: Start Backend with PM2
+      - name: Execute Deployment
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -54,17 +18,14 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            # Navigate to backend folder
-            cd /home/princegarments/public_html/backend
+            # Navigate to the web root
+            cd /home/princegarments/public_html
             
-            # Install backend dependencies
-            npm install
+            # Pull the latest code
+            git pull origin master
             
-            # Stop any existing PM2 processes to avoid conflicts
+            # Stop any conflicting PM2 processes (since we are using Docker now)
             pm2 stop all || true
             
-            # Start the backend using PM2
-            pm2 start npm --name "backend" -- run start
-            
-            # Save PM2 process list to restart on server reboot
-            pm2 save
+            # Rebuild and restart the Docker containers
+            docker compose up -d --build
