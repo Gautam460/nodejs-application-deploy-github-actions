@@ -1,0 +1,6 @@
+#!/usr/bin/expect -f
+set timeout 10
+spawn ssh -o StrictHostKeyChecking=no princegarments@89.233.104.44 "pm2 list && pm2 logs backend --lines 50 --nostream"
+expect "assword:"
+send "dEsD1rQuH1NK07L\r"
+expect eof

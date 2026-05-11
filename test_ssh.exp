@@ -1,0 +1,6 @@
+#!/usr/bin/expect -f
+set timeout 10
+spawn ssh -o StrictHostKeyChecking=no princegarments@89.233.104.44 "cd /home/princegarments/public_html && docker compose logs backend --tail 50"
+expect "assword:"
+send "dEsD1rQuH1NK07L\r"
+expect eof
