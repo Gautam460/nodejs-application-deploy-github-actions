@@ -10,49 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Build and Prepare Deployment
-        run: |
-          # 1. Install frontend dependencies safely (bypassing legacy conflicts)
-          npm install --legacy-peer-deps
-          
-          # 2. Build the React Frontend
-          npm run build
-          
-          # 3. Create a clean deployment package
-          mkdir deploy_package
-          
-          # 4. Copy built React files directly to root of deploy_package
-          cp -R dist/* deploy_package/
-          
-          # 5. Copy backend folder into deploy_package
-          cp -R backend deploy_package/
-          
-          # 6. Copy .htaccess for Apache API proxying
-          cp .htaccess deploy_package/ || true
-          
-          # 7. Remove any local node_modules from backend to speed up SCP
-          rm -rf deploy_package/backend/node_modules
-
-      - name: Upload Clean Package to Server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-          source: "deploy_package/"
-          target: "/home/princegarments/public_html"
-          strip_components: 1
-
-      - name: Start Backend safely with PM2
+      - name: Deploy with Docker Compose
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -60,15 +18,15 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            # Navigate to the uploaded backend folder
-            cd /home/princegarments/public_html/backend
+            # Navigate to the web root
+            cd /home/princegarments/public_html
             
-            # Install backend dependencies on the server
-            npm install
+            # Force Git to pull the latest changes safely
+            git fetch origin master
+            git reset --hard origin/master
             
-            # Restart PM2 process
-            pm2 stop backend || true
-            NODE_ENV=production pm2 start npm --name "backend" -- run start
+            # Stop any PM2 processes so they don't block Docker ports
+            pm2 stop all || true
             
-            # Save PM2 state
-            pm2 save
+            # Rebuild and start Docker containers
+            docker compose up -d --build
