@@ -39,7 +39,7 @@ const Profile = () => {
     const fetchCustomOrders = async () => {
         setLoadingCustom(true);
         try {
-            const response = await fetch("http://localhost:5000/api/custom-orders");
+            const response = await fetch("/api/custom-orders");
             if (response.ok) {
                 const data = await response.json();
                 setCustomOrders(data);

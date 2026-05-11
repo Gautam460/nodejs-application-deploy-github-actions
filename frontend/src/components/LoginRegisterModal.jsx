@@ -12,7 +12,7 @@ const LoginRegisterModal = ({ show, handleClose, isLogin, setIsLogin, onLogin })
         if (!isLogin) {
             // Registration
             try {
-                const response = await fetch("http://localhost:5000/api/auth/register", {
+                const response = await fetch("/api/auth/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password, name: "Customer" })
@@ -32,7 +32,7 @@ const LoginRegisterModal = ({ show, handleClose, isLogin, setIsLogin, onLogin })
         
         // Login
         try {
-            const response = await fetch("http://localhost:5000/api/auth/login", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password })

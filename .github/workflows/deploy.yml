@@ -16,7 +16,24 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Execute Remote SSH Commands
+      - name: Upload Files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22
+          source: "."
+          target: "/home/princegarments/public_html"
+          exclude: |
+            .git/
+            .github/
+            node_modules/
+            frontend/node_modules/
+            backend/node_modules/
+            backend/uploads/
+
+      - name: Restart App via Docker
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -25,5 +42,5 @@ jobs:
           port: 22
           script: |
             cd /home/princegarments/public_html
-            git pull origin master
+            pm2 stop all || true
             docker compose up -d --build

@@ -364,7 +364,7 @@ const Products = () => {
      const getProducts = async () => {
       setLoading(true);
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        const apiUrl = import.meta.env.VITE_API_URL || '/api';
         const response = await fetch(`${apiUrl}/products`);
         if (response.ok) {
           const products = await response.json();

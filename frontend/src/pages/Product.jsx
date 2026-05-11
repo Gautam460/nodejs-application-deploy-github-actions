@@ -32,13 +32,13 @@ const Product = () => {
     const getProduct = async () => {
       setLoading(true);
       setLoading2(true);
-      const response = await fetch(`http://localhost:5000/api/products/${id}`);
+      const response = await fetch(`/api/products/${id}`);
       const data = await response.json();
       setProduct(data);
       setActiveImg(data.image);
       setLoading(false);
       const response2 = await fetch(
-        `http://localhost:5000/api/products/category/${data.category}`
+        `/api/products/category/${data.category}`
       );
       const data2 = await response2.json();
       setSimilarProducts(data2);

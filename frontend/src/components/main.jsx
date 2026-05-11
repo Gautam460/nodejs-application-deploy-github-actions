@@ -44,7 +44,7 @@ const Home = () => {
   useEffect(() => {
     const fetchSlides = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/hero-slides");
+            const response = await fetch("/api/hero-slides");
             if (response.ok) {
                 const data = await response.json();
                 if (data.length > 0) {

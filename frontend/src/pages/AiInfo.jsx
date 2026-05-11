@@ -18,7 +18,7 @@ import {
 import { chatbotApi } from "../api/chatbot.api";
 import "../assets/css/chat.css";
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const apiBaseUrl = import.meta.env.VITE_API_URL || "/api";
 
 // ─── Simple inline markdown renderer ─────────────────────────────────────────
 const renderMarkdown = (text = "") => {

@@ -495,7 +495,7 @@ const CartCustom = () => {
 
         let savedOrderId = null;
         try {
-            const response = await fetch('http://localhost:5000/api/custom-orders', {
+            const response = await fetch('/api/custom-orders', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(customOrderData)

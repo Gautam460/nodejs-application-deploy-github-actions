@@ -52,7 +52,7 @@ const HeroSection = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/hero-slides");
+        const response = await fetch("/api/hero-slides");
         if (response.ok) {
           const data = await response.json();
           if (data && data.length > 0) {
@@ -147,7 +147,7 @@ const CategoriesSection = () => {
 
     useEffect(() => {
         const fetchCategories = async () => {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const apiUrl = import.meta.env.VITE_API_URL || '/api';
             try {
                 const response = await fetch(`${apiUrl}/categories`);
                 if (response.ok) {
@@ -220,7 +220,7 @@ const TrendingSection = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/products");
+                const res = await fetch("/api/products");
                 const data = await res.json();
                 setProducts(data);
             } catch (e) {
@@ -235,7 +235,7 @@ const TrendingSection = () => {
     useEffect(() => {
         // Fetch categories from Category Master for filters
         const fetchCategoryMaster = async () => {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const apiUrl = import.meta.env.VITE_API_URL || '/api';
             try {
                 const res = await fetch(`${apiUrl}/categories`);
                 if (res.ok) {

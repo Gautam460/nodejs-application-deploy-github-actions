@@ -7,11 +7,11 @@ dotenv.config({ path: path.join(__dirname, "../../.env") });
 
 // Configuration object for the application
 export const config = {
-  port: process.env.PORT || 5000,
+  port: process.env.PORT || 4000,
   db: {
     host: process.env.DB_HOST || "localhost",
     user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "root@123",
+    password: process.env.DB_PASSWORD || "Gautam@123#",
     name: process.env.DB_NAME || "prince_garments",
   },
   openrouter: {

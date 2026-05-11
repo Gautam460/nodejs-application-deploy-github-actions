@@ -1,6 +1,6 @@
 // API utility to make authenticated requests with JWT token
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 // Get token from localStorage
 const getToken = () => {
