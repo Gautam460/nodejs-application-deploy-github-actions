@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,7 +13,23 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Upload Files
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Using standard node version
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          cd ..
+          # Copy all built React files to the root directory
+          cp -R frontend/dist/* ./
+          # Remove the frontend source folder since it's now built
+          rm -rf frontend/
+
+      - name: Upload Files to Server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -25,15 +38,9 @@ jobs:
           port: 22
           source: "."
           target: "/home/princegarments/public_html"
-          exclude: |
-            .git/
-            .github/
-            node_modules/
-            frontend/node_modules/
-            backend/node_modules/
-            backend/uploads/
+          exclude: ".git/,.github/,node_modules/,backend/node_modules/,backend/uploads/"
 
-      - name: Restart App via Docker
+      - name: Start Backend with PM2
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -41,6 +48,17 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            cd /home/princegarments/public_html
+            # Navigate to backend folder
+            cd /home/princegarments/public_html/backend
+            
+            # Install backend dependencies
+            npm install
+            
+            # Stop any existing PM2 processes to avoid conflicts
             pm2 stop all || true
-            docker compose up -d --build
+            
+            # Start the backend using PM2
+            pm2 start npm --name "backend" -- run start
+            
+            # Save PM2 process list to restart on server reboot
+            pm2 save

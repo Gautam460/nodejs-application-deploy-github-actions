@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Proxy /api and /uploads requests to the Node.js backend running on PM2 (Port 4000)
+  RewriteRule ^api/(.*)$ http://127.0.0.1:4000/api/$1 [P,L]
+  RewriteRule ^uploads/(.*)$ http://127.0.0.1:4000/uploads/$1 [P,L]
+
+  # React Router fallback: if the file or directory doesn't exist, serve index.html
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
