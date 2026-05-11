@@ -9,10 +9,10 @@ dotenv.config({ path: path.join(__dirname, "../../.env") });
 export const config = {
   port: process.env.PORT || 4000,
   db: {
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "Gautam@123#",
-    name: process.env.DB_NAME || "prince_garments",
+    host: process.env.DB_HOST || "localhost", // Always localhost because DB runs on the same machine
+    user: process.env.DB_USER || (process.env.NODE_ENV === 'production' ? "princegarments" : "root"),
+    password: process.env.DB_PASSWORD || (process.env.NODE_ENV === 'production' ? "IlDaiuyW1ylt8bZ" : "Gautam@123#"),
+    name: process.env.DB_NAME || (process.env.NODE_ENV === 'production' ? "princegarments_db" : "prince_garments"),
   },
   openrouter: {
     apiKey: process.env.OPENROUTER_API_KEY || "",

@@ -68,7 +68,7 @@ jobs:
             
             # Restart PM2 process
             pm2 stop backend || true
-            pm2 start npm --name "backend" -- run start
+            NODE_ENV=production pm2 start npm --name "backend" -- run start
             
             # Save PM2 state
             pm2 save
