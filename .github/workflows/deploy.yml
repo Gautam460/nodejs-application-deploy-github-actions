@@ -18,16 +18,22 @@ jobs:
         with:
           node-version: '20' # Using standard node version
 
-      - name: Build Frontend
+      - name: Build and Prepare Deployment
         run: |
-          cd frontend
+          # 1. Build the Frontend at root
           npm install
           npm run build
-          cd ..
-          # Copy all built React files to the root directory
-          cp -R frontend/dist/* ./
-          # Remove the frontend source folder since it's now built
-          rm -rf frontend/
+          
+          # 2. Create a clean deployment folder
+          mkdir deploy_package
+          
+          # 3. Copy only what the server needs
+          cp -R dist/* deploy_package/
+          cp -R backend deploy_package/
+          cp .htaccess deploy_package/ || true
+          
+          # 4. Remove node_modules from backend to save upload time
+          rm -rf deploy_package/backend/node_modules
 
       - name: Upload Files to Server
         uses: appleboy/scp-action@v0.1.7
@@ -36,9 +42,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "."
+          source: "deploy_package/"
           target: "/home/princegarments/public_html"
-          exclude: ".git/,.github/,node_modules/,backend/node_modules/,backend/uploads/"
+          strip_components: 1
 
       - name: Start Backend with PM2
         uses: appleboy/ssh-action@v1.1.0
