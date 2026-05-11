@@ -1,0 +1,146 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1768642433818,
+      "tag": "0000_clear_molten_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1768643240188,
+      "tag": "0001_odd_praxagora",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1768643574893,
+      "tag": "0002_outstanding_unus",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1768644075154,
+      "tag": "0003_illegal_freak",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1768644283237,
+      "tag": "0004_lowly_roland_deschain",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1768648843618,
+      "tag": "0005_known_owl",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1768649689585,
+      "tag": "0006_spooky_mystique",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1768650106522,
+      "tag": "0007_dry_daredevil",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1768724716818,
+      "tag": "0008_peaceful_doorman",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1768727556472,
+      "tag": "0009_glorious_greymalkin",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1769107471775,
+      "tag": "0010_fuzzy_the_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1770677715427,
+      "tag": "0011_fast_jazinda",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1770679214111,
+      "tag": "0012_handy_runaways",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1770829678881,
+      "tag": "0013_volatile_the_spike",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1770829792031,
+      "tag": "0014_unusual_bastion",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1770830072069,
+      "tag": "0015_sleepy_the_professor",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1770830226907,
+      "tag": "0016_faithful_stardust",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1770830337077,
+      "tag": "0017_pink_forgotten_one",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1770830619439,
+      "tag": "0018_spicy_sister_grimm",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1773403149407,
+      "tag": "0019_bitter_karma",
+      "breakpoints": true
+    }
+  ]
+}

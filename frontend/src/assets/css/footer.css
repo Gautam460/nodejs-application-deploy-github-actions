@@ -1,0 +1,101 @@
+.footer {
+    background-color: #0f0f0f; /* Deeper black for premium feel */
+    color: #e0e0e0; /* Light grey text for readability */
+    font-family: 'Outfit', sans-serif;
+    border-top: 1px solid #222;
+}
+
+.section-title {
+    color: #d4af37; /* Royal Gold */
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #d4af37; /* Royal Gold */
+}
+
+.footer p {
+    color: #cccccc; /* Make text clearly visible */
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Links */
+.footer-link {
+    color: #b0b0b0 !important;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.footer-link:hover {
+    color: #d4af37 !important; /* Gold hover */
+    transform: translateX(5px);
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Icons */
+.footer i {
+    color: #d4af37; /* Gold icons */
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.social-icons a {
+   transition: all 0.3s ease;
+}
+
+.btn-floating {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-floating:hover {
+    background-color: #d4af37; /* Gold background on hover */
+    border-color: #d4af37;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.btn-floating:hover i {
+    color: #000 !important; /* Black icon on gold background */
+}
+
+.btn-floating i {
+    color: #fff !important; 
+    transition: color 0.3s ease;
+}
+
+hr.mb-4 {
+    border-color: #333;
+    opacity: 0.5;
+}
+
+/* Responsive centering fixes */
+@media (max-width: 768px) {
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

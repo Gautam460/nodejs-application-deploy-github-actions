@@ -144,3 +144,7 @@ vite.config.ts.timestamp-*
 
 # SSH Keys
 .ssh_keys/
+
+# Sensitive files
+token file
+*.sql

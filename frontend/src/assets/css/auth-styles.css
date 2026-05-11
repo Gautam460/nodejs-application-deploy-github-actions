@@ -1,0 +1,369 @@
+/* ============================================
+   SaaS Auth Design System — auth-styles.css
+   Font: Outfit (Google Fonts)
+   ============================================ */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+/* ─── Reset & Base ────────────────────────── */
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Page Wrapper ────────────────────────── */
+.auth-page {
+  font-family: "Outfit", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  /* Soft gradient background */
+  background: linear-gradient(135deg, #e0e7ff 0%, #f0f9ff 50%, #ede9fe 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative blobs */
+.auth-page::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.auth-page::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -200px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(147,51,234,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ─── Card ─────────────────────────────────── */
+.auth-card-saas {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.04),
+    0 4px 8px rgba(0,0,0,0.04),
+    0 16px 40px rgba(79,70,229,0.1);
+  overflow: hidden;
+}
+
+/* Card top accent bar */
+.auth-card-saas::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+}
+
+/* ─── Card Inner Sections ──────────────────── */
+.auth-card-header {
+  padding: 2rem 2rem 1.25rem;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.auth-card-body {
+  padding: 1.5rem 2rem 2rem;
+}
+
+/* ─── Brand / Logo Mark ────────────────────── */
+.auth-logo-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 6px 16px rgba(99,102,241,0.35);
+  font-size: 1.3rem;
+  color: white;
+}
+
+/* ─── Headings ─────────────────────────────── */
+.auth-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.auth-subheading {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* ─── Form Group ───────────────────────────── */
+.auth-form-group {
+  margin-bottom: 0.875rem;
+}
+
+.auth-form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+
+/* ─── Inputs ───────────────────────────────── */
+.auth-form-input,
+.auth-form-select {
+  font-family: "Outfit", sans-serif;
+  width: 100%;
+  padding: 0.6rem 0.875rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #1e293b;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+}
+
+.auth-form-input::placeholder {
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+.auth-form-input:hover,
+.auth-form-select:hover {
+  border-color: #c7d2fe;
+  background: #f8faff;
+}
+
+.auth-form-input:focus,
+.auth-form-select:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+/* ─── Select Dropdown ──────────────────────── */
+.auth-select-wrapper {
+  position: relative;
+}
+
+.auth-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #94a3b8;
+  pointer-events: none;
+  transition: border-color 0.2s;
+}
+
+.auth-select-wrapper:hover::after {
+  border-top-color: #6366f1;
+}
+
+.auth-form-select {
+  cursor: pointer;
+  padding-right: 2.5rem;
+}
+
+/* ─── Remember / Forgot Row ────────────────── */
+.auth-form-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.auth-remember-label {
+  font-size: 0.82rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.auth-remember-label input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+.auth-forgot-link {
+  font-size: 0.82rem;
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.auth-forgot-link:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* ─── Primary Button ───────────────────────── */
+.auth-submit-btn {
+  font-family: "Outfit", sans-serif;
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  box-shadow: 0 4px 14px rgba(79,70,229,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-submit-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(79,70,229,0.4);
+  filter: brightness(1.05);
+}
+
+.auth-submit-btn:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(79,70,229,0.25);
+}
+
+/* Button shimmer effect */
+.auth-submit-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+.auth-submit-btn:not(:disabled):hover::after {
+  left: 140%;
+}
+
+/* ─── Divider ──────────────────────────────── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.auth-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+.auth-divider-text {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* ─── Social Buttons ───────────────────────── */
+.auth-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.auth-social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  color: #475569;
+}
+
+.auth-social-btn:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+  transform: translateY(-1px);
+}
+
+/* ─── Footer Link ──────────────────────────── */
+.auth-footer-link-row {
+  text-align: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.auth-footer-link-row a,
+.auth-footer-link-row span.link {
+  color: #6366f1;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.auth-footer-link-row a:hover,
+.auth-footer-link-row span.link:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* ─── Responsive ───────────────────────────── */
+@media (max-width: 480px) {
+  .auth-card-saas {
+    border-radius: 16px;
+  }
+  .auth-card-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  .auth-card-body {
+    padding: 1.25rem 1.5rem 1.75rem;
+  }
+}

@@ -1,0 +1,95 @@
+.custom-studio-container {
+  display: flex;
+  height: calc(100vh - 80px); /* Adjust based on navbar height */
+  overflow: hidden;
+  background-color: #2c3e50;
+  font-family: "Inter", sans-serif;
+}
+
+.studio-sidebar {
+  width: 350px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.scrollable-config {
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+.scrollable-config::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable-config::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 3px;
+}
+
+.studio-canvas-area {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.realistic-canvas {
+  max-height: 95%;
+  max-width: 95%;
+  /* filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3)); */
+}
+
+.color-picker-input-lg {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.range-light::-webkit-slider-thumb {
+  background: #fff;
+}
+
+.range-light::-webkit-slider-runnable-track {
+  background: #555;
+  height: 4px;
+}
+
+.btn-group .btn-outline-light {
+  border-color: #444;
+  color: #888;
+}
+.btn-group .btn-outline-light:hover {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+.btn-group .btn-light {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

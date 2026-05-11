@@ -1,0 +1,20 @@
+CREATE TABLE `custom_orders` (
+	`id` serial AUTO_INCREMENT NOT NULL,
+	`user_id` int,
+	`user_email` varchar(255),
+	`product_type` varchar(50) NOT NULL,
+	`design_pattern` varchar(50),
+	`fit` varchar(50),
+	`main_color` varchar(50),
+	`accent_color` varchar(50),
+	`zipper_color` varchar(50),
+	`has_hood` int DEFAULT 0,
+	`has_zipper` int DEFAULT 1,
+	`logo_visible` int DEFAULT 1,
+	`measurements` text,
+	`custom_notes` text,
+	`total_price` decimal(10,2),
+	`status` varchar(50) DEFAULT 'Pending',
+	`created_at` timestamp DEFAULT (now()),
+	CONSTRAINT `custom_orders_id` PRIMARY KEY(`id`)
+);

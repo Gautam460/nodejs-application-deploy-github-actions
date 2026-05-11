@@ -1,0 +1,1 @@
+ALTER TABLE `custom_orders` ADD `design_image` mediumtext;
